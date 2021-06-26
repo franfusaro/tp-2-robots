@@ -27,6 +27,47 @@
 			{
 				"inputs": [
 					{
+						"internalType": "address",
+						"name": "alumno",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_idCurso",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint8",
+						"name": "nota",
+						"type": "uint8"
+					}
+				],
+				"name": "asignarAprobacionFinalCursada",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "alumno",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_idCurso",
+						"type": "uint256"
+					}
+				],
+				"name": "asignarAprobacionSoloCursada",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "uint256",
 						"name": "id",
 						"type": "uint256"
@@ -243,7 +284,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/CursosFactory.sol": "CursosFactory"
+			"contracts/AlumnosCursadas.sol": "AlumnosCursadas"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -257,6 +298,14 @@
 		"remappings": []
 	},
 	"sources": {
+		"contracts/AlumnosCursadas.sol": {
+			"keccak256": "0x02236c8ea38337c47a728576a66d6fcefe28f0f92b6918004c2be0d83a149aa2",
+			"license": "NONE",
+			"urls": [
+				"bzz-raw://342c25b6a6bcd7698f533f7269b25da8fe44dfe5ca525304d72f0dac65d26247",
+				"dweb:/ipfs/QmS6ZGarHVp7mDFMrZePuPCNjBG4VsaiJt99bNC43xHT9e"
+			]
+		},
 		"contracts/CursosFactory.sol": {
 			"keccak256": "0x8bdbfc4aad6c0afcea3f921a1730d35dce5dc5f82f97b94c7448cfae4e1c3849",
 			"license": "NONE",

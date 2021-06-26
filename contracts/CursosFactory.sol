@@ -14,10 +14,8 @@ contract CursosFactory is Ownable {
         bool activo;
     }
     
-    uint8 minNota = 4;
-    uint8 maxNota = 10;
-    
-    mapping(uint => bool) cursosCreados;
+    mapping(uint => bool) internal cursosCreados;
+    mapping(uint => address) internal profesoresCursos;
     Curso[] public cursos;
     
     modifier existeCurso(uint id) {
@@ -26,12 +24,10 @@ contract CursosFactory is Ownable {
     }
     
     function createCurso(uint id, string memory nombre, address profesor, int creditos, uint[] calldata correlativas) public onlyOwner {
-        if (cursosCreados[id]) {
-            // Ya existe el curso, ver de tirar excepcion
-            return;
-        }
+        require(!cursosCreados[id]);
         cursos.push(Curso(id, nombre, profesor, creditos, correlativas, true));
         cursosCreados[id] = true;
+        profesoresCursos[id] = profesor;
     }
 
     function changeCursoNombre(uint id, string memory _nuevoNombre) external onlyOwner existeCurso(id) {
