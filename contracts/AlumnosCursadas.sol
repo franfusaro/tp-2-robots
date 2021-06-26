@@ -27,7 +27,9 @@ contract AlumnosCursadas is CursosFactory {
         Curso memory curso = cursos[_idCurso];
         for (uint i=0; i< curso.correlativas.length; i++) {
             uint correlativa = curso.correlativas[i];
-            require(cursadasAprobadas[_idCurso][alumno].nota > 0);
+            Cursada memory cursadaAnterior = cursadasAprobadas[correlativa][alumno];
+            require(cursadaAnterior.soloCursada == false);
+            require(cursadaAnterior.nota > 0);
         }
         _;
     }
