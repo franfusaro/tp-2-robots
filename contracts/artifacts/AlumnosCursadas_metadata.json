@@ -343,19 +343,19 @@
 	},
 	"sources": {
 		"contracts/AlumnosCursadas.sol": {
-			"keccak256": "0x886c071c7e1e0dfdeaf1c41d332bfcdd8db49348d101255216fb596b3f1f2ef6",
+			"keccak256": "0x25f0057d21fb0b887666742578e4cee5f52948bd28abd2fc5ee884d0f10a03aa",
 			"license": "NONE",
 			"urls": [
-				"bzz-raw://b27a369967b69af1403348a89f7e5e0b167e4759c810f9dd96390bad3b95d4f6",
-				"dweb:/ipfs/QmdobANr9969NUpY5AzNynB1oJ4WCChcgdwpNFXJuhbnRg"
+				"bzz-raw://c404c582c21f44d566b0aa0072eb3147d3468b9908a711ed7d52da9d7e3c8502",
+				"dweb:/ipfs/QmZtqxwf2diKTW2wuHG3n1WAtb1G4fSCsVTQGRmD4mfiie"
 			]
 		},
 		"contracts/CursosFactory.sol": {
-			"keccak256": "0xde80973e35a5a582c526112de50dfef2a9a4f0a48e7a2b367607609e16665795",
+			"keccak256": "0x2ec7f41eef5b8e8362a8757bf466640ddb4960850446cf64b58aede7293d5f0c",
 			"license": "NONE",
 			"urls": [
-				"bzz-raw://b765257fdac9a3461a4aa8b7d32b6133de6c684cb76d8a6732c9113375c48722",
-				"dweb:/ipfs/QmUAFE1T7WMGfiWJTqMqoQupf4rNfFjfiD5yhmufr4meK7"
+				"bzz-raw://a4a61502d2b95c1b92e42a63ea3571c21586748e0956068512c34d94efe76c50",
+				"dweb:/ipfs/QmUWVeVbSznzYzzxejkkxHeXJMxUsZQcvXi4EuBvm2WCEV"
 			]
 		},
 		"contracts/Ownable.sol": {

@@ -42,7 +42,7 @@ contract CursosFactory is Ownable {
         cursos[id].profesor = _profesor;
     }
     
-    function changeCursoCorrelativas(uint id, uint[] calldata  _correlativas) external onlyOwner existeCurso(id) {
+    function changeCursoCorrelativas(uint id, uint[] calldata _correlativas) external onlyOwner existeCurso(id) {
         cursos[id].correlativas = _correlativas;
     }
     

@@ -258,11 +258,11 @@
 	},
 	"sources": {
 		"contracts/CursosFactory.sol": {
-			"keccak256": "0x8bdbfc4aad6c0afcea3f921a1730d35dce5dc5f82f97b94c7448cfae4e1c3849",
+			"keccak256": "0x2ec7f41eef5b8e8362a8757bf466640ddb4960850446cf64b58aede7293d5f0c",
 			"license": "NONE",
 			"urls": [
-				"bzz-raw://5ebd6579317449710faded9ad9722c3d4a6534c26aad369254386d3f34b2d1e9",
-				"dweb:/ipfs/QmVt4DwVRqas4pkP9mTtP7KV36i6c6YRV1rnSsHYXrxPhY"
+				"bzz-raw://a4a61502d2b95c1b92e42a63ea3571c21586748e0956068512c34d94efe76c50",
+				"dweb:/ipfs/QmUWVeVbSznzYzzxejkkxHeXJMxUsZQcvXi4EuBvm2WCEV"
 			]
 		},
 		"contracts/Ownable.sol": {
