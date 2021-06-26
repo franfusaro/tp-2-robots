@@ -16,20 +16,25 @@ contract AlumnosCursadas is CursosFactory {
     uint8 minNota = 4;
     uint8 maxNota = 10;
     
-    mapping(address => mapping(uint => Cursada)) cursadasAprobadas;
+    mapping(uint => mapping(address => Cursada)) cursadasAprobadas;
     
     modifier isProfesor(address profesor, uint idCurso) {
         require(profesoresCursos[idCurso] == profesor);
         _;
     }
     
-    function asignarAprobacionSoloCursada(address alumno, uint _idCurso) public isProfesor(msg.sender, _idCurso) {
-        cursadasAprobadas[alumno][_idCurso] = Cursada(_idCurso, true, 0, block.timestamp);
+    function asignarAprobacionSoloCursada(address alumno, uint _idCurso) external isProfesor(msg.sender, _idCurso) {
+        cursadasAprobadas[_idCurso][alumno] = Cursada(_idCurso, true, 0, block.timestamp);
     }
     
-    function asignarAprobacionFinalCursada(address alumno, uint _idCurso, uint8 nota) public isProfesor(msg.sender, _idCurso) {
+    function desasignarAprobacionSoloCursada(address alumno, uint _idCurso) external isProfesor(msg.sender, _idCurso) {
+        require(cursadasAprobadas[_idCurso][alumno].soloCursada);
+        delete cursadasAprobadas[_idCurso][alumno];
+    }
+    
+    function asignarAprobacionFinalCursada(address alumno, uint _idCurso, uint8 nota) external isProfesor(msg.sender, _idCurso) {
         require(nota >= minNota && nota <= maxNota);
-        cursadasAprobadas[alumno][_idCurso] = Cursada(_idCurso, true, nota, block.timestamp);
+        cursadasAprobadas[_idCurso][alumno] = Cursada(_idCurso, true, nota, block.timestamp);
     }
     
     function changeMinNota(uint8 _minNota) external onlyOwner {

@@ -158,6 +158,32 @@
 			{
 				"inputs": [
 					{
+						"internalType": "uint8",
+						"name": "_maxNota",
+						"type": "uint8"
+					}
+				],
+				"name": "changeMaxNota",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint8",
+						"name": "_minNota",
+						"type": "uint8"
+					}
+				],
+				"name": "changeMinNota",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "uint256",
 						"name": "id",
 						"type": "uint256"
@@ -225,6 +251,24 @@
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "alumno",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_idCurso",
+						"type": "uint256"
+					}
+				],
+				"name": "desasignarAprobacionSoloCursada",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -299,19 +343,19 @@
 	},
 	"sources": {
 		"contracts/AlumnosCursadas.sol": {
-			"keccak256": "0x02236c8ea38337c47a728576a66d6fcefe28f0f92b6918004c2be0d83a149aa2",
+			"keccak256": "0x886c071c7e1e0dfdeaf1c41d332bfcdd8db49348d101255216fb596b3f1f2ef6",
 			"license": "NONE",
 			"urls": [
-				"bzz-raw://342c25b6a6bcd7698f533f7269b25da8fe44dfe5ca525304d72f0dac65d26247",
-				"dweb:/ipfs/QmS6ZGarHVp7mDFMrZePuPCNjBG4VsaiJt99bNC43xHT9e"
+				"bzz-raw://b27a369967b69af1403348a89f7e5e0b167e4759c810f9dd96390bad3b95d4f6",
+				"dweb:/ipfs/QmdobANr9969NUpY5AzNynB1oJ4WCChcgdwpNFXJuhbnRg"
 			]
 		},
 		"contracts/CursosFactory.sol": {
-			"keccak256": "0x8bdbfc4aad6c0afcea3f921a1730d35dce5dc5f82f97b94c7448cfae4e1c3849",
+			"keccak256": "0xde80973e35a5a582c526112de50dfef2a9a4f0a48e7a2b367607609e16665795",
 			"license": "NONE",
 			"urls": [
-				"bzz-raw://5ebd6579317449710faded9ad9722c3d4a6534c26aad369254386d3f34b2d1e9",
-				"dweb:/ipfs/QmVt4DwVRqas4pkP9mTtP7KV36i6c6YRV1rnSsHYXrxPhY"
+				"bzz-raw://b765257fdac9a3461a4aa8b7d32b6133de6c684cb76d8a6732c9113375c48722",
+				"dweb:/ipfs/QmUAFE1T7WMGfiWJTqMqoQupf4rNfFjfiD5yhmufr4meK7"
 			]
 		},
 		"contracts/Ownable.sol": {
