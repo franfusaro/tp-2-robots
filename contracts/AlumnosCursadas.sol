@@ -18,13 +18,15 @@ contract AlumnosCursadas is CursosFactory {
     
     mapping(uint => mapping(address => Cursada)) cursadasAprobadas;
     
+    
     modifier isProfesor(address profesor, uint idCurso) {
-        require(profesoresCursos[idCurso] == profesor);
+        require(cursos[idCurso].profesor == profesor);
         _;
     }
     
     modifier hasAllCorrelativasAprobadas(address alumno, uint _idCurso) {
         Curso memory curso = cursos[_idCurso];
+        require(curso.initialized == true);
         for (uint i=0; i< curso.correlativas.length; i++) {
             uint correlativa = curso.correlativas[i];
             Cursada memory cursadaAnterior = cursadasAprobadas[correlativa][alumno];
@@ -35,17 +37,28 @@ contract AlumnosCursadas is CursosFactory {
     }
     
     function asignarAprobacionSoloCursada(address alumno, uint _idCurso) external isProfesor(msg.sender, _idCurso) hasAllCorrelativasAprobadas(alumno, _idCurso) {
+        require(cursadasAprobadas[_idCurso][alumno].nota == 0);
         cursadasAprobadas[_idCurso][alumno] = Cursada(_idCurso, true, 0, block.timestamp);
     }
     
     function asignarAprobacionFinalCursada(address alumno, uint _idCurso, uint8 nota) external isProfesor(msg.sender, _idCurso) hasAllCorrelativasAprobadas(alumno, _idCurso) {
         require(nota >= minNota && nota <= maxNota);
+        require(cursadasAprobadas[_idCurso][alumno].nota == 0);
         cursadasAprobadas[_idCurso][alumno] = Cursada(_idCurso, false, nota, block.timestamp);
     }
     
     function desasignarAprobacionSoloCursada(address alumno, uint _idCurso) external isProfesor(msg.sender, _idCurso) {
         require(cursadasAprobadas[_idCurso][alumno].soloCursada);
         delete cursadasAprobadas[_idCurso][alumno];
+    }
+    
+    function expirarCursadasVencidas(uint _idCurso) public {
+        /*cursadasAprobadas[_idCurso]
+        for (uint i=0; i < cursadasAprobadas[_idCurso].length; i++) {
+            if (cursadasAprobadas[_idCurso]) {
+                
+            }
+        }*/
     }
     
     function changeMinNota(uint8 _minNota) external onlyOwner {
