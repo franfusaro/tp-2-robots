@@ -11,13 +11,15 @@ contract AlumnosCursadas is CursosFactory {
         bool soloCursada;
         uint8 nota;
         uint fechaAprobacion;
+        bool initialized;
     }
     
     uint8 minNota = 4;
     uint8 maxNota = 10;
+    uint vencimientoCursada = 548 days; // years has been deprecated
     
     mapping(uint => mapping(address => Cursada)) cursadasAprobadas;
-    
+    mapping(uint => address[]) alumnosCursando;
     
     modifier isProfesor(address profesor, uint idCurso) {
         require(cursos[idCurso].profesor == profesor);
@@ -38,13 +40,16 @@ contract AlumnosCursadas is CursosFactory {
     
     function asignarAprobacionSoloCursada(address alumno, uint _idCurso) external isProfesor(msg.sender, _idCurso) hasAllCorrelativasAprobadas(alumno, _idCurso) {
         require(cursadasAprobadas[_idCurso][alumno].nota == 0);
-        cursadasAprobadas[_idCurso][alumno] = Cursada(_idCurso, true, 0, block.timestamp);
+        if (!cursadasAprobadas[_idCurso][alumno].initialized) {
+            alumnosCursando[_idCurso].push(alumno);
+        }
+        cursadasAprobadas[_idCurso][alumno] = Cursada(_idCurso, true, 0, block.timestamp, true);
     }
     
     function asignarAprobacionFinalCursada(address alumno, uint _idCurso, uint8 nota) external isProfesor(msg.sender, _idCurso) hasAllCorrelativasAprobadas(alumno, _idCurso) {
         require(nota >= minNota && nota <= maxNota);
         require(cursadasAprobadas[_idCurso][alumno].nota == 0);
-        cursadasAprobadas[_idCurso][alumno] = Cursada(_idCurso, false, nota, block.timestamp);
+        cursadasAprobadas[_idCurso][alumno] = Cursada(_idCurso, false, nota, block.timestamp, true);
     }
     
     function desasignarAprobacionSoloCursada(address alumno, uint _idCurso) external isProfesor(msg.sender, _idCurso) {
@@ -53,12 +58,13 @@ contract AlumnosCursadas is CursosFactory {
     }
     
     function expirarCursadasVencidas(uint _idCurso) public {
-        /*cursadasAprobadas[_idCurso]
-        for (uint i=0; i < cursadasAprobadas[_idCurso].length; i++) {
-            if (cursadasAprobadas[_idCurso]) {
-                
+        for (uint i=0; i < alumnosCursando[_idCurso].length; i++) {
+            address idAlumno = alumnosCursando[_idCurso][i];
+            Cursada memory cursadaAlumno = cursadasAprobadas[_idCurso][idAlumno];
+            if (cursadaAlumno.soloCursada && block.timestamp >= cursadaAlumno.fechaAprobacion + vencimientoCursada) {
+                delete cursadasAprobadas[_idCurso][idAlumno];
             }
-        }*/
+        }
     }
     
     function changeMinNota(uint8 _minNota) external onlyOwner {
