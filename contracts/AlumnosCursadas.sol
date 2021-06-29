@@ -5,7 +5,7 @@ pragma solidity ^0.8.0;
 import "./CursosFactory.sol";
 
 contract AlumnosCursadas is CursosFactory {
-    
+
     struct Cursada {
         uint idCurso;
         bool soloCursada;
@@ -20,6 +20,7 @@ contract AlumnosCursadas is CursosFactory {
     
     mapping(uint => mapping(address => Cursada)) cursadasAprobadas;
     mapping(uint => address[]) alumnosCursando;
+    mapping(address => int) creditos;
     
     modifier isProfesor(address profesor, uint idCurso) {
         require(cursos[idCurso].profesor == profesor);
@@ -50,6 +51,7 @@ contract AlumnosCursadas is CursosFactory {
         require(nota >= minNota && nota <= maxNota);
         require(cursadasAprobadas[_idCurso][alumno].nota == 0);
         cursadasAprobadas[_idCurso][alumno] = Cursada(_idCurso, false, nota, block.timestamp, true);
+        creditos[alumno] += cursos[_idCurso].creditos;
     }
     
     function desasignarAprobacionSoloCursada(address alumno, uint _idCurso) external isProfesor(msg.sender, _idCurso) {
