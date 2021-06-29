@@ -18,6 +18,8 @@ contract AlumnosCursadas is CursosFactory {
     uint8 maxNota = 10;
     uint vencimientoCursada = 548 days; // years has been deprecated
     
+    event CursadaAprobada(uint idCurso, address alumno, bool soloCursada);
+    
     mapping(uint => mapping(address => Cursada)) cursadasAprobadas;
     mapping(uint => address[]) alumnosCursando;
     mapping(address => int) creditos;
@@ -45,6 +47,7 @@ contract AlumnosCursadas is CursosFactory {
             alumnosCursando[_idCurso].push(alumno);
         }
         cursadasAprobadas[_idCurso][alumno] = Cursada(_idCurso, true, 0, block.timestamp, true);
+        emit CursadaAprobada(_idCurso, alumno, true);
     }
     
     function asignarAprobacionFinalCursada(address alumno, uint _idCurso, uint8 nota) external isProfesor(msg.sender, _idCurso) hasAllCorrelativasAprobadas(alumno, _idCurso) {
@@ -52,6 +55,7 @@ contract AlumnosCursadas is CursosFactory {
         require(cursadasAprobadas[_idCurso][alumno].nota == 0);
         cursadasAprobadas[_idCurso][alumno] = Cursada(_idCurso, false, nota, block.timestamp, true);
         creditos[alumno] += cursos[_idCurso].creditos;
+        emit CursadaAprobada(_idCurso, alumno, false);
     }
     
     function desasignarAprobacionSoloCursada(address alumno, uint _idCurso) external isProfesor(msg.sender, _idCurso) {
