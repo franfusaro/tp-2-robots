@@ -217,45 +217,6 @@
 			{
 				"inputs": [
 					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"name": "cursos",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "id",
-						"type": "uint256"
-					},
-					{
-						"internalType": "string",
-						"name": "nombre",
-						"type": "string"
-					},
-					{
-						"internalType": "address",
-						"name": "profesor",
-						"type": "address"
-					},
-					{
-						"internalType": "int256",
-						"name": "creditos",
-						"type": "int256"
-					},
-					{
-						"internalType": "bool",
-						"name": "activo",
-						"type": "bool"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
 						"internalType": "address",
 						"name": "alumno",
 						"type": "address"
@@ -269,6 +230,38 @@
 				"name": "desasignarAprobacionSoloCursada",
 				"outputs": [],
 				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_idCurso",
+						"type": "uint256"
+					}
+				],
+				"name": "expirarCursadasVencidas",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "idsCursos",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -343,19 +336,19 @@
 	},
 	"sources": {
 		"contracts/AlumnosCursadas.sol": {
-			"keccak256": "0xbcab70ceff6ea152f39bbd37b61749b3bbfac6048494f71a84d8d3056b3eefdd",
+			"keccak256": "0x3f9b922d99dd25263ca5cdf31d3af672c7bd11105a811f9ae8fe234b1163de2d",
 			"license": "NONE",
 			"urls": [
-				"bzz-raw://57c6a8df94b5d023a36a4f800875fef6244b19d4164436005f27697e1140173b",
-				"dweb:/ipfs/QmcX6BJpLVEoVYut6gPHjvkoP4nFE4w2cwxehSyNGasaxr"
+				"bzz-raw://ed6bfa0ffbbebd54a67317be4346da6b0bf6a3caab7bf60f9673affaeb60e2b3",
+				"dweb:/ipfs/QmZTY1tdSN2g2knqN8o5xJxG8JJMgRXytpU24rMgX4nSSq"
 			]
 		},
 		"contracts/CursosFactory.sol": {
-			"keccak256": "0x2ec7f41eef5b8e8362a8757bf466640ddb4960850446cf64b58aede7293d5f0c",
+			"keccak256": "0x6ab522949a96289e7ccf48c9b696a2f03bc0954367225378358785f914b00cbe",
 			"license": "NONE",
 			"urls": [
-				"bzz-raw://a4a61502d2b95c1b92e42a63ea3571c21586748e0956068512c34d94efe76c50",
-				"dweb:/ipfs/QmUWVeVbSznzYzzxejkkxHeXJMxUsZQcvXi4EuBvm2WCEV"
+				"bzz-raw://e3cec01446524804ff79f2ab308cbf271b8a7d18348057a1202b2ce740846d56",
+				"dweb:/ipfs/QmTkK7QT83m6sGa8R9DauwXLWu6q36JaukDNRA2hc36Mvb"
 			]
 		},
 		"contracts/Ownable.sol": {

@@ -12,22 +12,21 @@ contract CursosFactory is Ownable {
         int creditos;
         uint[] correlativas;
         bool activo;
+        bool initialized;
     }
     
-    mapping(uint => bool) internal cursosCreados;
-    mapping(uint => address) internal profesoresCursos;
-    Curso[] public cursos;
+    mapping(uint => Curso) internal cursos;
+    uint[] public idsCursos;
     
     modifier existeCurso(uint id) {
-        require(cursosCreados[id]);
+        require(cursos[id].initialized == true);
         _;
     }
     
     function createCurso(uint id, string memory nombre, address profesor, int creditos, uint[] calldata correlativas) public onlyOwner {
-        require(!cursosCreados[id]);
-        cursos.push(Curso(id, nombre, profesor, creditos, correlativas, true));
-        cursosCreados[id] = true;
-        profesoresCursos[id] = profesor;
+        require(cursos[id].initialized == false);
+        idsCursos.push(id);
+        cursos[id] = Curso(id, nombre, profesor, creditos, correlativas, true, true);
     }
 
     function changeCursoNombre(uint id, string memory _nuevoNombre) external onlyOwner existeCurso(id) {
