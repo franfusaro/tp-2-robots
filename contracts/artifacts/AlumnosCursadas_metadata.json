@@ -343,11 +343,11 @@
 	},
 	"sources": {
 		"contracts/AlumnosCursadas.sol": {
-			"keccak256": "0x25f0057d21fb0b887666742578e4cee5f52948bd28abd2fc5ee884d0f10a03aa",
+			"keccak256": "0xbcab70ceff6ea152f39bbd37b61749b3bbfac6048494f71a84d8d3056b3eefdd",
 			"license": "NONE",
 			"urls": [
-				"bzz-raw://c404c582c21f44d566b0aa0072eb3147d3468b9908a711ed7d52da9d7e3c8502",
-				"dweb:/ipfs/QmZtqxwf2diKTW2wuHG3n1WAtb1G4fSCsVTQGRmD4mfiie"
+				"bzz-raw://57c6a8df94b5d023a36a4f800875fef6244b19d4164436005f27697e1140173b",
+				"dweb:/ipfs/QmcX6BJpLVEoVYut6gPHjvkoP4nFE4w2cwxehSyNGasaxr"
 			]
 		},
 		"contracts/CursosFactory.sol": {
