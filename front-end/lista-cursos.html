@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Trabajo Practico robots</title>
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script language="javascript" type="text/javascript" src="../abi/AlumnosCursadas_abi"></script>
+    <script language="javascript" type="text/javascript" src="../abi/CursosFactory_abi"></script>
+    <script language="javascript" type="text/javascript" src="../abi/Ownable_abi"></script>
+    <script src="helper.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <div id="cursos"></div>
+
+</html>
+
+    </br></br>
+    <div id="txStatus"></div>
+
+
+    <script>
+      var cursosFactory;
+      var userAccount;
+
+      function startApp() {
+        
+        var address = helper.getAddress()
+        cursosFactory = new web3js.eth.Contract(cursosFactoryABI,address);
+        
+        web3js.eth.accounts[0] = address;
+        userAccount = web3js.eth.accounts[0];
+
+      }
+
+      function crearCurso() {
+
+        var address = helper.getAddress()
+        
+        $("#txStatus").text("Creando curso");
+        nombre = document.getElementById('nombreCurso').value
+        console.log(nombre)
+        creditosCurso = document.getElementById('creditosCurso').value
+        console.log(creditosCurso)
+        correlativasCurso = document.getElementById('correlativasCurso').value
+        console.log(correlativasCurso)
+
+        return cursosFactory.methods.createCurso(124,nombre,address,creditosCurso,[1,2,3])
+        .send({ from: address })
+        .on("receipt", function(receipt) {
+          $("#txStatus").text("El curso: " + nombre + " ha sido creado satisfactiamente!");
+        })
+        .on("error", function(error) {
+          $("#txStatus").text(error);
+        });
+      }
+
+
+      window.addEventListener('load', function() {
+
+          web3js = new Web3(new Web3.providers.HttpProvider("http://localhost:8545",
+            {
+              headers: [{
+              name: 'Access-Control-Allow-Origin',
+              value: 'http://localhost:8545'
+            }
+            ]
+            }));
+
+        // Now you can start your app & access web3 freely:
+        startApp()
+
+      })
+
+    </script>
+
+  </body>
+</html>
