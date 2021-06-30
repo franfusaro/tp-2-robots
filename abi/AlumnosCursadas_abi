@@ -1,24 +1,5 @@
 var alumnosCursadasABI = [
 	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "previousOwner",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "newOwner",
-				"type": "address"
-			}
-		],
-		"name": "OwnershipTransferred",
-		"type": "event"
-	},
-	{
 		"inputs": [
 			{
 				"internalType": "address",
@@ -209,43 +190,29 @@ var alumnosCursadasABI = [
 		"type": "function"
 	},
 	{
+		"anonymous": false,
 		"inputs": [
 			{
+				"indexed": false,
 				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "cursos",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "id",
+				"name": "idCurso",
 				"type": "uint256"
 			},
 			{
-				"internalType": "string",
-				"name": "nombre",
-				"type": "string"
-			},
-			{
+				"indexed": false,
 				"internalType": "address",
-				"name": "profesor",
+				"name": "alumno",
 				"type": "address"
 			},
 			{
-				"internalType": "int256",
-				"name": "creditos",
-				"type": "int256"
-			},
-			{
+				"indexed": false,
 				"internalType": "bool",
-				"name": "activo",
+				"name": "soloCursada",
 				"type": "bool"
 			}
 		],
-		"stateMutability": "view",
-		"type": "function"
+		"name": "CursadaAprobada",
+		"type": "event"
 	},
 	{
 		"inputs": [
@@ -266,17 +233,36 @@ var alumnosCursadasABI = [
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"name": "owner",
-		"outputs": [
+		"inputs": [
 			{
+				"internalType": "uint256",
+				"name": "_idCurso",
+				"type": "uint256"
+			}
+		],
+		"name": "expirarCursadasVencidas",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
 				"internalType": "address",
-				"name": "",
+				"name": "previousOwner",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "newOwner",
 				"type": "address"
 			}
 		],
-		"stateMutability": "view",
-		"type": "function"
+		"name": "OwnershipTransferred",
+		"type": "event"
 	},
 	{
 		"inputs": [],
@@ -296,6 +282,38 @@ var alumnosCursadasABI = [
 		"name": "transferOwnership",
 		"outputs": [],
 		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "idsCursos",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "owner",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
 		"type": "function"
 	}
 ]

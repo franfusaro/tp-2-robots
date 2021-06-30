@@ -9,6 +9,31 @@
 				"anonymous": false,
 				"inputs": [
 					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "idCurso",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "alumno",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "bool",
+						"name": "soloCursada",
+						"type": "bool"
+					}
+				],
+				"name": "CursadaAprobada",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
 						"indexed": true,
 						"internalType": "address",
 						"name": "previousOwner",
@@ -336,11 +361,11 @@
 	},
 	"sources": {
 		"contracts/AlumnosCursadas.sol": {
-			"keccak256": "0x3f9b922d99dd25263ca5cdf31d3af672c7bd11105a811f9ae8fe234b1163de2d",
+			"keccak256": "0xfc40e436bd1fbfe21eb2891883a81dbba875a338de0669403d56b8a01d9a70cc",
 			"license": "NONE",
 			"urls": [
-				"bzz-raw://ed6bfa0ffbbebd54a67317be4346da6b0bf6a3caab7bf60f9673affaeb60e2b3",
-				"dweb:/ipfs/QmZTY1tdSN2g2knqN8o5xJxG8JJMgRXytpU24rMgX4nSSq"
+				"bzz-raw://f1898ad8365d7bd33efa6618b2e1748499a199cb99cb0a538ab2790a8f4ed5d5",
+				"dweb:/ipfs/Qmeew6cZjJxs9rFz9A2k2gakm2WymbDNud5Xe9eip3FPWM"
 			]
 		},
 		"contracts/CursosFactory.sol": {
