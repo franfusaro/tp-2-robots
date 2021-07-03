@@ -80,4 +80,10 @@ contract AlumnosCursadas is CursosFactory {
     function changeMaxNota(uint8 _maxNota) external onlyOwner {
         maxNota = _maxNota;
     }
+    
+    function testView() public pure returns(string memory) {
+        return "Hello world!";
+    }
 }
+
+

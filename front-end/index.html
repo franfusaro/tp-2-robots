@@ -1,53 +1,54 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
     <title>Trabajo Practico robots</title>
     <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
-    <script language="javascript" type="text/javascript" src="../abi/AlumnosCursadas_abi"></script>
-    <script language="javascript" type="text/javascript" src="../abi/CursosFactory_abi"></script>
-    <script language="javascript" type="text/javascript" src="../abi/Ownable_abi"></script>
+    <script language="javascript" type="text/javascript" src="../abi/AlumnosCursadas_abi.js"></script>
+    <script src="helper.js" type="text/javascript"></script>
 
-  </head>
-  <body>
-    <button type="button-home" onclick="listarCursos()">Listar cursos</button></br></br>
-    <button type="button-home" onclick="crearCursos()">Crear curso</button></br></br>
-    <button type="button-home" onclick="aprobarAlumnos()">Aprobar alumno</button></br></br>
-    <button type="button-home" onclick="verificarEstadoAlumno()">Verificar estado alumno</button></br></br>
+</head>
+<body>
+    <h1>Sistema de la Facultad - FIUBA</h1>
+    <div style="margin: 10px;">
+        <button type="button-home" onclick="listarCursos()">Listar cursos</button><br /><br />
+    </div>
+    <div style="margin: 10px;">
+        <button type="button-home" onclick="crearCursos()">Crear curso</button><br /><br />
+    </div>
+    <div style="margin: 10px;">
+        <button type="button-home" onclick="aprobarAlumnos()">Aprobar alumno</button><br /><br />
+    </div>
+    <div style="margin: 10px;">
+        <button type="button-home" onclick="verificarEstadoAlumno()">Verificar estado alumno</button><br /><br />
+    </div>
 
     <script>
 
-      function listarCursos() {
-        window.location.href = '../front-end/lista-cursos.html'
-      } 
+        function listarCursos() {
+            window.location.href = '../front-end/lista-cursos.html';
+        }
 
-      function crearCursos() {
-        window.location.href = '../front-end/cursos.html'
-      } 
+        function crearCursos() {
+            window.location.href = '../front-end/cursos.html';
+        }
 
-      function aprobarAlumnos() {
-        //TODO
-      } 
+        function aprobarAlumnos() {
+            //TODO
+        }
 
-      function verificarEstadoAlumno() {
-        //TODO
-      }             
+        function verificarEstadoAlumno() {
+            //TODO
+        }
 
-      window.addEventListener('load', function() {
-
-          web3js = new Web3(new Web3.providers.HttpProvider("http://localhost:8545",
-            {
-              headers: [{
-              name: 'Access-Control-Allow-Origin',
-              value: 'http://localhost:8545'
+        window.addEventListener('load',
+            async function () {
+                await helper.startApp(window.ethereum);
+                helper.testView(function (text2) { alert(text2); });
             }
-            ]
-            }));
-
-      })
+        );
 
     </script>
-
-  </body>
+</body>
 </html>

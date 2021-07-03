@@ -310,6 +310,19 @@
 				"type": "function"
 			},
 			{
+				"inputs": [],
+				"name": "testView",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "address",
@@ -361,11 +374,11 @@
 	},
 	"sources": {
 		"contracts/AlumnosCursadas.sol": {
-			"keccak256": "0xfc40e436bd1fbfe21eb2891883a81dbba875a338de0669403d56b8a01d9a70cc",
+			"keccak256": "0xaf844cbc6ffadf263426bf3e87b5aa400c9e9b9de1b9ac39230cf101bc1255be",
 			"license": "NONE",
 			"urls": [
-				"bzz-raw://f1898ad8365d7bd33efa6618b2e1748499a199cb99cb0a538ab2790a8f4ed5d5",
-				"dweb:/ipfs/Qmeew6cZjJxs9rFz9A2k2gakm2WymbDNud5Xe9eip3FPWM"
+				"bzz-raw://ba7489857b5f2989f5113ab5b132c991ba6ad71e0f6c74dad922b501c1268f0f",
+				"dweb:/ipfs/QmRwKjkggTgKPwghgxsXMMMiANTouthwqfZjdd8JqoXGcX"
 			]
 		},
 		"contracts/CursosFactory.sol": {

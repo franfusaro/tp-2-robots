@@ -6,78 +6,61 @@
         <meta charset="UTF-8">
         <title>Trabajo Practico robots</title>
         <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
-        <script language="javascript" type="text/javascript" src="../abi/AlumnosCursadas_abi"></script>
-        <script language="javascript" type="text/javascript" src="../abi/CursosFactory_abi"></script>
-        <script language="javascript" type="text/javascript" src="../abi/Ownable_abi"></script>
+        <script language="javascript" type="text/javascript" src="../abi/AlumnosCursadas_abi.js"></script>
         <script src="helper.js" type="text/javascript"></script>
     </head>
     <body>
     <div id="cursos"></div>
 
-    <form name ="formularioContacto" method="get" action="accion1.html">
+    <form name="formularioContacto" method="get" action="accion1.html">
         <h2>Formulario de creacion de curso</h2>
-        <label>Nombre:  <input id="nombreCurso" type="text" name="nombre" /></label><br><br>
-        <label>Créditos:  <input id="creditosCurso" type="text" name="creditos" /></label><br><br>
-        <label>Correlativas TODO:  <input id="correlativasCurso" type="text" name="corrlativas" /></label><br><br>
+        <div style="margin: 10px;">
+            <label>Identificador:  <input id="idCurso" type="text" name="nombre" /></label>
+        </div>
+        <div style="margin: 10px;">
+            <label>Nombre:  <input id="nombreCurso" type="text" name="nombre" /></label>
+        </div>
+        <div style="margin: 10px;">
+            <label>Créditos:  <input id="creditosCurso" type="text" name="creditos" /></label>
+        </div>
+        <div style="margin: 10px;">
+            <label>Profesor (address):  <input id="addrProfesor" type="text" name="creditos" /></label>
+        </div>
+        <div style="margin: 10px;">
+            <label>Correlativas TODO:  <input id="correlativasCurso" type="text" name="corrlativas" /></label>
+        </div>
         <button type="button" onclick="crearCurso()">Crear curso</button>
     </form>
 
     <br><br>
     <div id="txStatus"></div>
         <script>
-            var contract;
-            var userAccount;
-
-            async function startApp() {
-                if (window.ethereum) {
-                    await ethereum.enable();
-                }
-
-                var accountInterval = setInterval(async() => {
-                    // Check if account has changed
-	                const accounts = await ethereum.request({ method: 'eth_accounts' });
-	                if (accounts[0] !== userAccount) {
-		                userAccount = accounts[0];
-		                //alert(userAccount);
-	                }
-                }, 100);
-                var address = helper.getAddress();
-                window.web3 = new Web3(window.ethereum);
-                //TODO: Load contract abi and use it
-                alert(address);
-                contract = new window.web3.eth.Contract(alumnosCursadasABI, address);
-            }
-
             function crearCurso() {
-
-                var address = userAccount;
-        
-                $("#txStatus").text("Creando curso");
-                nombre = document.getElementById('nombreCurso').value
-                console.log(nombre)
-                creditosCurso = document.getElementById('creditosCurso').value
-                console.log(creditosCurso)
-                correlativasCurso = document.getElementById('correlativasCurso').value
-                console.log(correlativasCurso)
-
-                return contract.methods.createCurso(124,nombre,address,creditosCurso,[])
-                    .send({ from: address })
-                    .on("receipt", function(receipt) {
+                var userAddr = helper.userAccount;
+                $("#txStatus").text("Creando curso... Por favor espere...");
+                var idCurso = document.getElementById('idCurso').value;
+                var nombre = document.getElementById('nombreCurso').value;
+                var creditos = document.getElementById('creditosCurso').value;
+                //var correlativas = document.getElementById('correlativasCurso').value;
+                var correlativas = [];
+                return helper.createCurso(idCurso,
+                    nombre,
+                    userAddr,
+                    creditos,
+                    correlativas,
+                    function(receipt) {
                         $("#txStatus").text("El curso: " + nombre + " ha sido creado satisfactiamente!");
-                    })
-                    .on("error", function(error) {
-                        $("#txStatus").text(error);
+                    },
+                    function(error) {
+                        $("#txStatus").text(JSON.stringify(error));
                     });
+
             }
 
-
-            window.addEventListener('load', function () {
-                web3js = new Web3(window.ethereum);
-
-                // Now you can start your app & access web3 freely:
-                startApp()
-
-            })
+            window.addEventListener('load',
+                async function() {
+                    await helper.startApp(window.ethereum);
+                });
 
         </script>
 
