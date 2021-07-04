@@ -9,31 +9,6 @@
 				"anonymous": false,
 				"inputs": [
 					{
-						"indexed": false,
-						"internalType": "uint256",
-						"name": "idCurso",
-						"type": "uint256"
-					},
-					{
-						"indexed": false,
-						"internalType": "address",
-						"name": "alumno",
-						"type": "address"
-					},
-					{
-						"indexed": false,
-						"internalType": "bool",
-						"name": "soloCursada",
-						"type": "bool"
-					}
-				],
-				"name": "CursadaAprobada",
-				"type": "event"
-			},
-			{
-				"anonymous": false,
-				"inputs": [
-					{
 						"indexed": true,
 						"internalType": "address",
 						"name": "previousOwner",
@@ -48,73 +23,6 @@
 				],
 				"name": "OwnershipTransferred",
 				"type": "event"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "alumno",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_idCurso",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint8",
-						"name": "nota",
-						"type": "uint8"
-					}
-				],
-				"name": "asignarAprobacionFinalCursada",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "alumno",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_idCurso",
-						"type": "uint256"
-					}
-				],
-				"name": "asignarAprobacionSoloCursada",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint8",
-						"name": "_maxNota",
-						"type": "uint8"
-					}
-				],
-				"name": "changeMaxNota",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint8",
-						"name": "_minNota",
-						"type": "uint8"
-					}
-				],
-				"name": "changeMinNota",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
 			},
 			{
 				"inputs": [
@@ -147,93 +55,6 @@
 				"name": "createCurso",
 				"outputs": [],
 				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "alumno",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_idCurso",
-						"type": "uint256"
-					}
-				],
-				"name": "desasignarAprobacionSoloCursada",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "_idCurso",
-						"type": "uint256"
-					}
-				],
-				"name": "expirarCursadasVencidas",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "id",
-						"type": "uint256"
-					}
-				],
-				"name": "getCurso",
-				"outputs": [
-					{
-						"components": [
-							{
-								"internalType": "uint256",
-								"name": "id",
-								"type": "uint256"
-							},
-							{
-								"internalType": "string",
-								"name": "nombre",
-								"type": "string"
-							},
-							{
-								"internalType": "address",
-								"name": "profesor",
-								"type": "address"
-							},
-							{
-								"internalType": "int256",
-								"name": "creditos",
-								"type": "int256"
-							},
-							{
-								"internalType": "uint256[]",
-								"name": "correlativas",
-								"type": "uint256[]"
-							},
-							{
-								"internalType": "bool",
-								"name": "activo",
-								"type": "bool"
-							},
-							{
-								"internalType": "bool",
-								"name": "initialized",
-								"type": "bool"
-							}
-						],
-						"internalType": "struct CursosFactory.Curso",
-						"name": "",
-						"type": "tuple"
-					}
-				],
-				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -322,19 +143,6 @@
 				"type": "function"
 			},
 			{
-				"inputs": [],
-				"name": "testView",
-				"outputs": [
-					{
-						"internalType": "string",
-						"name": "",
-						"type": "string"
-					}
-				],
-				"stateMutability": "pure",
-				"type": "function"
-			},
-			{
 				"inputs": [
 					{
 						"internalType": "address",
@@ -371,7 +179,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/AlumnosCursadas.sol": "AlumnosCursadas"
+			"contracts/CursosFactory.sol": "CursosFactory"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -385,20 +193,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/AlumnosCursadas.sol": {
-			"keccak256": "0xaf844cbc6ffadf263426bf3e87b5aa400c9e9b9de1b9ac39230cf101bc1255be",
-			"license": "NONE",
-			"urls": [
-				"bzz-raw://ba7489857b5f2989f5113ab5b132c991ba6ad71e0f6c74dad922b501c1268f0f",
-				"dweb:/ipfs/QmRwKjkggTgKPwghgxsXMMMiANTouthwqfZjdd8JqoXGcX"
-			]
-		},
 		"contracts/CursosFactory.sol": {
-			"keccak256": "0xdfc03153caf487bc603c93d75b62f4eee8586f109d986312e927ba43358efa1f",
+			"keccak256": "0xed7e71678b4d37fce3d1bb080dc0454bd0f9c3f565b4268b3c30e832ef2fa6cc",
 			"license": "NONE",
 			"urls": [
-				"bzz-raw://098fb85a3a94099e3dae49f0af70d2ad6bbdf94a80c26b59a69fbc7a8fc6a3d5",
-				"dweb:/ipfs/QmYg4F4sHY2AmAfxeNZhgdtj6c7iwgR85h7YFByTLUfEC5"
+				"bzz-raw://00ecfaf3b32c6b387fc900429e170d0f5d136229eb2f1ee9b2106a06429b6961",
+				"dweb:/ipfs/QmQDRYuKqGhCmVh4zDoyRnBpkC9jJgtvMXxQpLew52U29T"
 			]
 		},
 		"contracts/Ownable.sol": {

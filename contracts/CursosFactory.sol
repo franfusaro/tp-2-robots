@@ -28,24 +28,21 @@ contract CursosFactory is Ownable {
         idsCursos.push(id);
         cursos[id] = Curso(id, nombre, profesor, creditos, correlativas, true, true);
     }
-
-    function changeCursoNombre(uint id, string memory _nuevoNombre) external onlyOwner existeCurso(id) {
-        cursos[id].nombre = _nuevoNombre;
+    
+    function modifyCurso(uint id, string memory nombre, address profesor, int creditos, uint[] calldata correlativas) public onlyOwner {
+        require(cursos[id].initialized == true);
+        Curso storage curso = cursos[id];
+        curso.nombre = nombre;
+        curso.profesor = profesor;
+        curso.creditos = creditos;
+        curso.correlativas = correlativas;
     }
     
-    function changeCursoCreditos(uint id, int _creditos) external onlyOwner existeCurso(id) {
-        cursos[id].creditos = _creditos;
+    function listCursos() public view returns(uint[] memory) {
+        return idsCursos;
     }
     
-    function changeCursoProfesor(uint id, address _profesor) external onlyOwner existeCurso(id) {
-        cursos[id].profesor = _profesor;
-    }
-    
-    function changeCursoCorrelativas(uint id, uint[] calldata _correlativas) external onlyOwner existeCurso(id) {
-        cursos[id].correlativas = _correlativas;
-    }
-    
-    function changeCursoActivo(uint id, bool _activo) external onlyOwner existeCurso(id) {
-        cursos[id].activo = _activo;
+    function getCurso(uint id) public existeCurso(id) view returns(Curso memory)  {
+        return cursos[id];
     }
 }

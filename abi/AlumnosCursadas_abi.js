@@ -1,5 +1,49 @@
 var alumnosCursadasABI = [
 	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "idCurso",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "alumno",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "bool",
+				"name": "soloCursada",
+				"type": "bool"
+			}
+		],
+		"name": "CursadaAprobada",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "previousOwner",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "OwnershipTransferred",
+		"type": "event"
+	},
+	{
 		"inputs": [
 			{
 				"internalType": "address",
@@ -36,96 +80,6 @@ var alumnosCursadasABI = [
 			}
 		],
 		"name": "asignarAprobacionSoloCursada",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "id",
-				"type": "uint256"
-			},
-			{
-				"internalType": "bool",
-				"name": "_activo",
-				"type": "bool"
-			}
-		],
-		"name": "changeCursoActivo",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "id",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256[]",
-				"name": "_correlativas",
-				"type": "uint256[]"
-			}
-		],
-		"name": "changeCursoCorrelativas",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "id",
-				"type": "uint256"
-			},
-			{
-				"internalType": "int256",
-				"name": "_creditos",
-				"type": "int256"
-			}
-		],
-		"name": "changeCursoCreditos",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "id",
-				"type": "uint256"
-			},
-			{
-				"internalType": "string",
-				"name": "_nuevoNombre",
-				"type": "string"
-			}
-		],
-		"name": "changeCursoNombre",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "id",
-				"type": "uint256"
-			},
-			{
-				"internalType": "address",
-				"name": "_profesor",
-				"type": "address"
-			}
-		],
-		"name": "changeCursoProfesor",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -190,31 +144,6 @@ var alumnosCursadasABI = [
 		"type": "function"
 	},
 	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "idCurso",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"internalType": "address",
-				"name": "alumno",
-				"type": "address"
-			},
-			{
-				"indexed": false,
-				"internalType": "bool",
-				"name": "soloCursada",
-				"type": "bool"
-			}
-		],
-		"name": "CursadaAprobada",
-		"type": "event"
-	},
-	{
 		"inputs": [
 			{
 				"internalType": "address",
@@ -246,42 +175,59 @@ var alumnosCursadasABI = [
 		"type": "function"
 	},
 	{
-		"anonymous": false,
 		"inputs": [
 			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "previousOwner",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "newOwner",
-				"type": "address"
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
 			}
 		],
-		"name": "OwnershipTransferred",
-		"type": "event"
-	},
-	{
-		"inputs": [],
-		"name": "renounceOwnership",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
+		"name": "getCurso",
+		"outputs": [
 			{
-				"internalType": "address",
-				"name": "newOwner",
-				"type": "address"
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "nombre",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "profesor",
+						"type": "address"
+					},
+					{
+						"internalType": "int256",
+						"name": "creditos",
+						"type": "int256"
+					},
+					{
+						"internalType": "uint256[]",
+						"name": "correlativas",
+						"type": "uint256[]"
+					},
+					{
+						"internalType": "bool",
+						"name": "activo",
+						"type": "bool"
+					},
+					{
+						"internalType": "bool",
+						"name": "initialized",
+						"type": "bool"
+					}
+				],
+				"internalType": "struct CursosFactory.Curso",
+				"name": "",
+				"type": "tuple"
 			}
 		],
-		"name": "transferOwnership",
-		"outputs": [],
-		"stateMutability": "nonpayable",
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -305,6 +251,52 @@ var alumnosCursadasABI = [
 	},
 	{
 		"inputs": [],
+		"name": "listCursos",
+		"outputs": [
+			{
+				"internalType": "uint256[]",
+				"name": "",
+				"type": "uint256[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "nombre",
+				"type": "string"
+			},
+			{
+				"internalType": "address",
+				"name": "profesor",
+				"type": "address"
+			},
+			{
+				"internalType": "int256",
+				"name": "creditos",
+				"type": "int256"
+			},
+			{
+				"internalType": "uint256[]",
+				"name": "correlativas",
+				"type": "uint256[]"
+			}
+		],
+		"name": "modifyCurso",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
 		"name": "owner",
 		"outputs": [
 			{
@@ -318,6 +310,13 @@ var alumnosCursadasABI = [
 	},
 	{
 		"inputs": [],
+		"name": "renounceOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
 		"name": "testView",
 		"outputs": [
 			{
@@ -327,6 +326,19 @@ var alumnosCursadasABI = [
 			}
 		],
 		"stateMutability": "pure",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "transferOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
 		"type": "function"
 	}
 ]
