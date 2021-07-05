@@ -8,15 +8,20 @@
     <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
     <script language="javascript" type="text/javascript" src="../abi/AlumnosCursadas_abi.js"></script>
     <script src="helper.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="topnav">
+    <a class="active" href="./lista-cursos.html">Cursos</a>
+    <a href="./lista-alumnos.html">Alumnos</a>
+</div>
     <div style="margin: 0 auto; max-width: 1280px;">
         <div id="cursos"></div>
         <form method="get" action="accion1.html">
             <h1>Editar curso</h1>
             <div style="padding: 10px 0; display:flex;">
                 <div style="width:50%"><label>Identificador: </label></div>
-                <div style="width:50%"><input id="idCurso" style="width: 100%" disabled type="text" name="nombre" /></div>
+                <div style="width:50%"><input id="idCurso" style="width: 100%" disabled type="text" name="id" /></div>
             </div>
             <div style="padding: 10px 0; display:flex;">
                 <div style="width:50%"><label>Nombre: </label></div>
@@ -24,67 +29,66 @@
             </div>
             <div style="padding: 10px 0; display:flex;">
                 <div style="width:50%"><label>Créditos: </label></div>
-                <div style="width:50%"><input id="creditosCurso" style="width: 100%" type="text" name="nombre" /></div>
+                <div style="width:50%"><input id="creditosCurso" style="width: 100%" type="text" name="creditos" /></div>
             </div>
             <div style="padding: 10px 0; display:flex;">
                 <div style="width:50%"><label>Profesor (address): </label></div>
-                <div style="width:50%"><input id="addrProfesor" style="width: 100%" type="text" name="nombre" /></div>
+                <div style="width:50%"><input id="addrProfesor" style="width: 100%" type="text" name="profesor" /></div>
             </div>
             <div style="padding: 10px 0; display:flex;">
-                <div style="width:50%"><label>Correlativas TODO: </label></div>
-                <div style="width:50%"><input id="correlativasCurso" style="width: 100%" type="text" name="nombre" /></div>
+                <div style="width:50%"><label>Correlativas: </label></div>
+                <div style="width:50%"><input id="correlativasCurso" style="width: 100%" type="text" name="correlativas" /></div>
             </div>
             <div style="padding: 20px; text-align: center;" id="txStatus"></div>
             <div style="display: flex; justify-content: center;">
-                <button style="width: 100%; padding: 10px; font-weight: bold; background-color: blueviolet; color: white;" type="button" onclick="editCurso()">Guardar curso</button>
+                <button style="width: 100%; " type="button" onclick="editCurso()">Guardar curso</button>
             </div>
         </form>
     </div>
-<script>
-    function loadCurso(id) {
-        helper.getCursoDetails(id, fillCursoInfo);
-    }
-
-    function fillCursoInfo(curso) {
-        document.getElementById('idCurso').value = curso.id;
-        document.getElementById('nombreCurso').value = curso.nombre;
-        document.getElementById('creditosCurso').value = curso.creditos;
-        document.getElementById('correlativasCurso').value = curso.correlativas;
-        document.getElementById('addrProfesor').value = curso.profesor;
-    }
-
-    function editCurso() {
-        var userAddr = helper.userAccount;
-        $("#txStatus").text("Guardando curso... Por favor espere...");
-        var idCurso = document.getElementById('idCurso').value;
-        var nombre = document.getElementById('nombreCurso').value;
-        var creditos = document.getElementById('creditosCurso').value;
-        //var correlativas = document.getElementById('correlativasCurso').value;
-        var correlativas = [];
-        return helper.editCurso(idCurso,
-            nombre,
-            userAddr,
-            creditos,
-            correlativas,
-            function (receipt) {
-                $("#txStatus").text("El curso: " + nombre + " ha sido modificado satisfactiamente!");
-            },
-            function (error) {
-                $("#txStatus").text(JSON.stringify(error));
-            });
-
-    }
-
-    window.addEventListener('load',
-        async function () {
-            await helper.startApp(window.ethereum);
-            const urlSearchParams = new URLSearchParams(window.location.search);
-            const queryString = Object.fromEntries(urlSearchParams.entries());
-            loadCurso(queryString.id);
+    <script>
+        function loadCurso(id) {
+            helper.getCursoDetails(id, fillCursoInfo);
         }
-    );
 
-</script>
+        function fillCursoInfo(curso) {
+            document.getElementById('idCurso').value = curso.id;
+            document.getElementById('nombreCurso').value = curso.nombre;
+            document.getElementById('creditosCurso').value = curso.creditos;
+            document.getElementById('correlativasCurso').value = curso.correlativas;
+            document.getElementById('addrProfesor').value = curso.profesor;
+        }
+
+        function editCurso() {
+            var userAddr = helper.userAccount;
+            $("#txStatus").text("Guardando curso... Por favor espere...");
+            var idCurso = document.getElementById('idCurso').value;
+            var nombre = document.getElementById('nombreCurso').value;
+            var creditos = document.getElementById('creditosCurso').value;
+            var correlativas = document.getElementById('correlativasCurso').value.split(",");
+            return helper.editCurso(idCurso,
+                nombre,
+                userAddr,
+                creditos,
+                correlativas,
+                function (receipt) {
+                    $("#txStatus").text("El curso: " + nombre + " ha sido modificado satisfactiamente!");
+                },
+                function (error) {
+                    $("#txStatus").text(JSON.stringify(error));
+                });
+
+        }
+
+        window.addEventListener('load',
+            async function () {
+                await helper.startApp(window.ethereum);
+                const urlSearchParams = new URLSearchParams(window.location.search);
+                const queryString = Object.fromEntries(urlSearchParams.entries());
+                loadCurso(queryString.id);
+            }
+        );
+
+    </script>
 
 </body>
 </html>
