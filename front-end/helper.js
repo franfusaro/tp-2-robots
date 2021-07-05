@@ -19,7 +19,7 @@ var helper = (function() {
             const accounts = await eth.request({ method: 'eth_accounts' });
             if (accounts[0] !== _helper.userAccount) {
                 _helper.userAccount = accounts[0];
-                alert(`User addr: ${_helper.userAccount}`);
+                //alert(`User addr: ${_helper.userAccount}`);
             }
         }, 100);
 
@@ -27,8 +27,18 @@ var helper = (function() {
     };
 
     _helper.createCurso = function (id, nombre, profesor, creditos, correlativas, onReceipt, onError) {
-        alert(_helper.userAccount);
         _helper.contract.methods.createCurso(id, nombre, profesor, creditos, correlativas)
+            .send({ from: _helper.userAccount })
+            .on("receipt", function (receipt) {
+                onReceipt(receipt);
+            })
+            .on("error", function (error) {
+                onError(error);
+            });
+    };
+
+    _helper.editCurso = function (id, nombre, profesor, creditos, correlativas, onReceipt, onError) {
+        _helper.contract.methods.modifyCurso(id, nombre, profesor, creditos, correlativas)
             .send({ from: _helper.userAccount })
             .on("receipt", function (receipt) {
                 onReceipt(receipt);

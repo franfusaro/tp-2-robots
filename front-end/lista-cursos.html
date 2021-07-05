@@ -10,48 +10,51 @@
     <script src="helper.js" type="text/javascript"></script>
 </head>
 <body>
-<h1>Listado de cursos</h1>
-<div id="cursos">
+    <div style="margin: 0 auto; max-width: 1280px;">
+        <h1>Listado de cursos</h1>
+        <div id="cursos" style="margin: 20px;">
+        </div>
+        <br />
+        <div id="txStatus"></div>
+    </div>
+    <script>
+        var cursosFactory;
+        var userAccount;
 
-</div>
-<br/>
-<div id="txStatus"></div>
-
-<script>
-    var cursosFactory;
-    var userAccount;
-
-    function loadCursos() {
-        helper.getCursos(displayCursos);
-    }
-
-    function displayCursos(ids) {
-        alert(JSON.stringify(ids));
-        $("#cursos").empty();
-        for (let id of ids) {
-            helper.getCursoDetails(id, appendCurso);
+        function navigateToEditarCurso(id) {
+            window.location.href = `./editar-curso.html?id=${id}`;
         }
-    }
 
-    function appendCurso(curso) {
-        // Using ES6's "template literals" to inject variables into the HTML.
-        // Append each one to our #zombies div
-        $("#cursos").append(`<div class="curso">
-      <ul>
-        <li>Id: ${curso.id}</li>
-        <li>Nombre: ${curso.nombre}</li>
-      </ul>
-    </div>`);
-    }
-
-    window.addEventListener('load',
-        async function() {
-            await helper.startApp(window.ethereum);
-            loadCursos();
+        function loadCursos() {
+            helper.getCursos(displayCursos);
         }
-    );
 
-</script>
+        function displayCursos(ids) {
+            $("#cursos").empty();
+            for (let id of ids) {
+                helper.getCursoDetails(id, appendCurso);
+            }
+        }
+
+        function appendCurso(curso) {
+            $("#cursos").append(`<div style="border: 1px solid silver; padding: 10px 20px;">
+                        <h3 style="float:right">${curso.creditos} Créditos</h3>
+                        <h2>${curso.id} - ${curso.nombre}</h2>
+                        <p>Profesor: ${curso.profesor}</p>
+                        <p>Correlativas: ${curso.correlativas}</p>
+                        <p>Activo: ${curso.activo}</p>
+                        <div style="display:flex; justify-content:flex-end;"><button onclick="navigateToEditarCurso(${curso.id})">Editar</button></div>
+                    </div>`);
+        }
+
+        window.addEventListener('load',
+            async function () {
+                await helper.startApp(window.ethereum);
+                loadCursos();
+            }
+        );
+
+    </script>
 
 </body>
 </html>
