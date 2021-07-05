@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Trabajo Practico robots</title>
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script language="javascript" type="text/javascript" src="../abi/AlumnosCursadas_abi.js"></script>
+    <script src="helper.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="topnav">
+        <a href="./lista-cursos.html">Cursos</a>
+        <a class="active" href="./alumno.html">Alumno</a>
+    </div>
+    <div style="margin: 0 auto; max-width: 1280px;">
+        <h1>Alumnos</h1>
+        <div>Ingrese el address de un alumno para ver su historial académico</div>
+        <div style="margin-top: 20px;">
+            <label>Alumno (address): </label><input type="text" />
+            <button>Buscar</button>
+        </div>
+        <div id="cursadas" style="margin-top: 20px;">
+        </div>
+        <br />
+        <div id="txStatus"></div>
+    </div>
+    <script>
+
+        function loadAlumno() {
+            helper.getAlumnos(displayAlumnos);
+        }
+
+        function displayAlumnos(ids) {
+            $("#cursos").empty();
+            for (let id of ids) {
+                helper.getCursoDetails(id, appendCursada);
+            }
+        }
+
+        function appendCursada(cursada) {
+            // TODO
+        }
+
+        window.addEventListener('load',
+            async function () {
+                await helper.startApp(window.ethereum);
+            }
+        );
+
+    </script>
+
+</body>
+</html>

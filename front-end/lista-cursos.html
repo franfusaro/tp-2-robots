@@ -13,7 +13,7 @@
 <body>
     <div class="topnav">
         <a class="active" href="./lista-cursos.html">Cursos</a>
-        <a href="./lista-alumnos.html">Alumnos</a>
+        <a class="active" href="./alumno.html">Alumno</a>
     </div>
     <div style="margin: 0 auto; max-width: 1280px;">
         <h1>Listado de cursos</h1>
@@ -26,8 +26,6 @@
         <div id="txStatus"></div>
     </div>
     <script>
-        var cursosFactory;
-        var userAccount;
 
         function navigateToEditarCurso(id) {
             window.location.href = `./editar-curso.html?id=${id}`;
