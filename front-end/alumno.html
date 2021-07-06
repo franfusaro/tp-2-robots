@@ -39,28 +39,22 @@
         }
 
         function displayAlumnos(ids) {
-            $("#cursos").empty();
+            var addressAlumno = document.getElementById('idAlumno').value;
+            $("#cursadas").empty();
             for (let id of ids) {
-                helper.getCursoDetails(id, appendCursadaSiExiste);
+                helper.getCusadaAprobada(id, addressAlumno, appendCursadaSiExiste);
             }
         }
 
-        function appendCursadaSiExiste(idCurso) {
-            var addressAlumno = document.getElementById('idAlumno').value;
-            helper.getCusadaAprobada(idCurso,
-                addressAlumno,
-                function appendCursada(cursada) {
-                    $("#cursos").append(`<div style="border: 1px solid silver; padding: 10px 20px;">
-                                         <h3 style="float:right">${cursada.id} Créditos</h3>
-                                            <p>Solo cursada: ${cursada.soloCursada}</p>
-                                            <p>Nota: ${cursada.nota}</p>
-                                            <p>Activo: ${cursada.activo}</p>
-                                            <p>Fecha aprobacion: ${cursada.fechaAprobacion}</p>
-                                            <div style="display:flex; justify-content:flex-end;"><button style="width: 100%;" type="button"
-                                                onclick="navigateToEditarCurso(${cursada.id})">Editar</button></div>
-                                        </div>`);
-                }
-            );
+        function appendCursadaSiExiste(cursada) {
+            if (cursada.initialized) {
+                $("#cursadas").append(`<div style="border: 1px solid silver; padding: 10px 20px;">
+                                 <h3>Curso con ID: ${cursada.idCurso} </h3>
+                                    <p>Aprueba solo cursada: ${cursada.soloCursada}</p>
+                                    <p>Nota (0 si es solo cursada): ${cursada.nota}</p>
+                                    <p>Fecha aprobacion: ${new Date(cursada.fechaAprobacion * 1000)}</p>
+                                </div>`);
+            }
         }
 
 

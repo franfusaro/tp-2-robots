@@ -59,15 +59,19 @@
         }
 
         function editCurso() {
-            var userAddr = helper.userAccount;
+            var profAddr = document.getElementById('addrProfesor').value;
             $("#txStatus").text("Guardando curso... Por favor espere...");
             var idCurso = document.getElementById('idCurso').value;
             var nombre = document.getElementById('nombreCurso').value;
             var creditos = document.getElementById('creditosCurso').value;
-            var correlativas = document.getElementById('correlativasCurso').value.split(",");
+            var correlativasString = document.getElementById('correlativasCurso').value;
+            var correlativas = [];
+            if (correlativasString !== "") {
+                correlativas = correlativasString.split(",");
+            }
             return helper.editCurso(idCurso,
                 nombre,
-                userAddr,
+                profAddr,
                 creditos,
                 correlativas,
                 function (receipt) {

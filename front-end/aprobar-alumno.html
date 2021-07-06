@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html lang="en">
 <head>
@@ -12,7 +12,7 @@
 </head>
 <body>
     <div class="topnav">
-        <a class="active" href="./lista-cursos.html">Cursos</a>
+        <a href="./lista-cursos.html">Cursos</a>
         <a class="active" href="./alumno.html">Alumno</a>
     </div>
     <div style="margin: 0 auto; max-width: 1280px;">
@@ -52,7 +52,7 @@
                 helper.aprobarSoloCursada(idAlumno,
                     idCurso,
                 function (receipt) {
-                    $("#txStatus").text("La cursada del alumno: " + idAlumno + " ha sido aprobado satisfactiamente!");
+                    $("#txStatus").text(`La cursada del alumno: ${idAlumno} ha sido aprobado satisfactiamente!`);
                 },
                 function (error) {
                     $("#txStatus").text(JSON.stringify(error));
@@ -62,7 +62,7 @@
                     idCurso,
                     nota,
                 function (receipt) {
-                    $("#txStatus").text("La materia del alumno: " + idAlumno + " ha sido aprobado satisfactiamente!");
+                    $("#txStatus").text(`La materia del alumno: ${idAlumno} ha sido aprobado satisfactiamente!`);
                 },
                 function (error) {
                     $("#txStatus").text(JSON.stringify(error));
