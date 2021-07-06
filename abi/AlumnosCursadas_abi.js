@@ -234,6 +234,57 @@ var alumnosCursadasABI = [
 		"inputs": [
 			{
 				"internalType": "uint256",
+				"name": "idCurso",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "alumno",
+				"type": "address"
+			}
+		],
+		"name": "getCusadaAprobadas",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "idCurso",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "soloCursada",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint8",
+						"name": "nota",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint256",
+						"name": "fechaAprobacion",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "initialized",
+						"type": "bool"
+					}
+				],
+				"internalType": "struct AlumnosCursadas.Cursada",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
 			}
@@ -313,19 +364,6 @@ var alumnosCursadasABI = [
 		"name": "renounceOwnership",
 		"outputs": [],
 		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "testView",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			}
-		],
-		"stateMutability": "pure",
 		"type": "function"
 	},
 	{

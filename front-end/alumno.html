@@ -19,8 +19,8 @@
         <h1>Alumnos</h1>
         <div>Ingrese el address de un alumno para ver su historial académico</div>
         <div style="margin-top: 20px;">
-            <label>Alumno (address): </label><input type="text" />
-            <button>Buscar</button>
+            <label>Alumno (address): </label><input id="idAlumno" type="text" />
+            <button onclick="cargarCursadas()">Buscar</button>
         </div>
         <div id="cursadas" style="margin-top: 20px;">
         </div>
@@ -29,20 +29,41 @@
     </div>
     <script>
 
-        function loadAlumno() {
-            helper.getAlumnos(displayAlumnos);
+        function navigateToEditarCursada(id) {
+            //window.location.href = `./editar-cursada.html?id=${id}`;
+            window.location.href = `./index.html`;
+        }
+
+        function cargarCursadas() {
+            helper.getCursos(displayAlumnos);
         }
 
         function displayAlumnos(ids) {
             $("#cursos").empty();
             for (let id of ids) {
-                helper.getCursoDetails(id, appendCursada);
+                helper.getCursoDetails(id, appendCursadaSiExiste);
             }
         }
 
-        function appendCursada(cursada) {
-            // TODO
+        function appendCursadaSiExiste(idCurso) {
+            var addressAlumno = document.getElementById('idAlumno').value;
+            helper.getCusadaAprobada(idCurso,
+                addressAlumno,
+                function appendCursada(cursada) {
+                    $("#cursos").append(`<div style="border: 1px solid silver; padding: 10px 20px;">
+                                         <h3 style="float:right">${cursada.id} Créditos</h3>
+                                            <p>Solo cursada: ${cursada.soloCursada}</p>
+                                            <p>Nota: ${cursada.nota}</p>
+                                            <p>Activo: ${cursada.activo}</p>
+                                            <p>Fecha aprobacion: ${cursada.fechaAprobacion}</p>
+                                            <div style="display:flex; justify-content:flex-end;"><button style="width: 100%;" type="button"
+                                                onclick="navigateToEditarCurso(${cursada.id})">Editar</button></div>
+                                        </div>`);
+                }
+            );
         }
+
+
 
         window.addEventListener('load',
             async function () {

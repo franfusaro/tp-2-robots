@@ -240,6 +240,57 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
+						"name": "idCurso",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "alumno",
+						"type": "address"
+					}
+				],
+				"name": "getCusadaAprobadas",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "idCurso",
+								"type": "uint256"
+							},
+							{
+								"internalType": "bool",
+								"name": "soloCursada",
+								"type": "bool"
+							},
+							{
+								"internalType": "uint8",
+								"name": "nota",
+								"type": "uint8"
+							},
+							{
+								"internalType": "uint256",
+								"name": "fechaAprobacion",
+								"type": "uint256"
+							},
+							{
+								"internalType": "bool",
+								"name": "initialized",
+								"type": "bool"
+							}
+						],
+						"internalType": "struct AlumnosCursadas.Cursada",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
 					}
@@ -322,19 +373,6 @@
 				"type": "function"
 			},
 			{
-				"inputs": [],
-				"name": "testView",
-				"outputs": [
-					{
-						"internalType": "string",
-						"name": "",
-						"type": "string"
-					}
-				],
-				"stateMutability": "pure",
-				"type": "function"
-			},
-			{
 				"inputs": [
 					{
 						"internalType": "address",
@@ -386,11 +424,11 @@
 	},
 	"sources": {
 		"contracts/AlumnosCursadas.sol": {
-			"keccak256": "0xaf844cbc6ffadf263426bf3e87b5aa400c9e9b9de1b9ac39230cf101bc1255be",
+			"keccak256": "0x63144b1a15db7e4bdc0e4b66d2a2e04db402d37c1c1a892b4ff9bb3fe3fdb758",
 			"license": "NONE",
 			"urls": [
-				"bzz-raw://ba7489857b5f2989f5113ab5b132c991ba6ad71e0f6c74dad922b501c1268f0f",
-				"dweb:/ipfs/QmRwKjkggTgKPwghgxsXMMMiANTouthwqfZjdd8JqoXGcX"
+				"bzz-raw://7f541a5c3aab2752884eb3b1413d3cfe87136cb941c494ced154dea2f9e8808d",
+				"dweb:/ipfs/QmX73MnYDa15XxuUDV816nXtvT6KjaTP67bwmgcv6V8VFz"
 			]
 		},
 		"contracts/CursosFactory.sol": {

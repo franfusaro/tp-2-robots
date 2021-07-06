@@ -81,8 +81,8 @@ contract AlumnosCursadas is CursosFactory {
         maxNota = _maxNota;
     }
     
-    function testView() public pure returns(string memory) {
-        return "Hello world!";
+    function getCusadaAprobadas(uint idCurso,address alumno) public view returns(Cursada memory) {
+        return cursadasAprobadas[idCurso][alumno];
     }
 }
 

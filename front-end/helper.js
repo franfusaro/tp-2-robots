@@ -1,6 +1,6 @@
 var helper = (function() {
     var _helper = {};
-    var contractAddress = "0x833abd61073521d1c4D4F573920E064a77E2A901";
+    var contractAddress = "0xD6A58385e00B7FC0D9d4Bcd660BC9B679EfDB4EE";
     var contract;
     var userAccount;
     var web3js;
@@ -61,6 +61,33 @@ var helper = (function() {
         _helper.contract.methods.getCurso(id).call()
             .then(function (curso) { onSuccess(curso); })
             .catch(err => alert(err));
+    }
+
+    _helper.aprobarSoloCursada = function(address, idCurso, onError) {
+        _helper.contract.methods.asignarAprobacionSoloCursada(address,idCurso)
+            .send({ from: _helper.userAccount })
+            .on("receipt", function (receipt) {
+                onReceipt(receipt);
+            })
+            .on("error", function (error) {
+                onError(error);
+            });
+    }
+
+    _helper.aprobarFinal = function(address, idCurso, nota, onError) {
+        _helper.contract.methods.asignarAprobacionFinalCursada(address,idCurso,nota)
+            .send({ from: _helper.userAccount })
+            .on("receipt", function (receipt) {
+                onReceipt(receipt);
+            })
+            .on("error", function (error) {
+                onError(error);
+            });
+    }
+
+    _helper.getCusadaAprobada = function(id, address, onSuccess) {
+        _helper.contract.methods.getCusadaAprobadas(id,address).call()
+            .then(function (cursada) { onSuccess(cursada); })
     }
 
 
