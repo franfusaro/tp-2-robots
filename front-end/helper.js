@@ -1,6 +1,6 @@
 var helper = (function () {
     var _helper = {};
-    var contractAddress = "0x905850E4f90ce4488E43c6D3E8d4cA3eBd1f71d9";
+    var contractAddress = "0xD72045f39c4BE7221767FbE8E8BCeeA04FD4A95F";
     var contract;
     var userAccount;
     var web3js;
@@ -40,8 +40,9 @@ var helper = (function () {
                     });
         } catch (ex) {
             alert(`Alguno de los valores ingresados no es correcto: ${ex}`);
-        }
-    };
+        };
+    }
+
 
     _helper.editCurso = function (id, nombre, profesor, creditos, correlativas, onReceipt, onError) {
         try {
@@ -57,6 +58,7 @@ var helper = (function () {
         } catch (ex) {
             alert(`Alguno de los valores ingresados no es correcto: ${ex}`);
         };
+    }
 
         _helper.getCursos = function (onSuccess) {
             // Returns a list of cursos IDs
@@ -107,4 +109,4 @@ var helper = (function () {
 
 
         return _helper;
-    }) ();
+    })();

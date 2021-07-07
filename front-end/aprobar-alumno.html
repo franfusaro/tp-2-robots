@@ -24,8 +24,8 @@
                 <div style="width:50%"><input id="idAlumno" style="width: 100%" type="text" name="idAlumno" /></div>
             </div>
             <div style="padding: 10px 0; display:flex;">
-                <div style="width:50%"><label>Curso (ingrese id del curso): </label></div> <!--- TODO: hacer un select --->
-                <div style="width:50%"><input id="idCurso" style="width: 100%" type="text" name="idCurso" /></div>
+                <div style="width:50%"><label>Curso </label></div> 
+                <div style="width:50%"><select name="lista_cursos" style="width: 100%" id="lista_cursos"></select></div>               
             </div>
             <div style="padding: 10px 0; display:flex;">
                 <div style="width:50%"><label>Nota: </label></div>
@@ -43,10 +43,26 @@
         </form>
     </div>
     <script>
+
+        function loadCursos() {
+            helper.getCursos(displayCursos);
+        }
+
+        function displayCursos(ids) {
+            $("#cursos").empty();
+            for (let id of ids) {
+                helper.getCursoDetails(id, appendCurso);
+            }
+        }
+
+        function appendCurso(curso) {
+            $("#lista_cursos").append(`<option value="${curso.id}">${curso.id} - ${curso.nombre}</option>`);
+        }
+
         function aprobarAlumno() {
             $("#txStatus").text("Aprobando alumno... Por favor espere...");
             var idAlumno = document.getElementById('idAlumno').value;
-            var idCurso = document.getElementById('idCurso').value;
+            var idCurso = document.getElementById('lista_cursos').value;
             var nota = document.getElementById('nota').value;
             if (document.getElementById('solo_cursada').checked) {
                 helper.aprobarSoloCursada(idAlumno,
@@ -73,6 +89,7 @@
         window.addEventListener('load',
             async function () {
                 await helper.startApp(window.ethereum);
+                loadCursos();
             }
         );
 

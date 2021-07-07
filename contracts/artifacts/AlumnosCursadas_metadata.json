@@ -443,11 +443,11 @@
 	},
 	"sources": {
 		"contracts/AlumnosCursadas.sol": {
-			"keccak256": "0xf236df7752bc89716deaf6ad38d106fa03005418de34f350ffdb12da2facd143",
+			"keccak256": "0x487aa0b0371f1a2f1b4bfde87c548449c1beaeaf0a90e48e565093b2bd98127d",
 			"license": "NONE",
 			"urls": [
-				"bzz-raw://a81e34ebc8f83f33d4751b17e88fada60e6400dd715a0bd96297f9d7d74f031a",
-				"dweb:/ipfs/QmRYu9hGSJDesqTfEzb7McRmfUTLuxbAyLxtR3hhdMKq4Q"
+				"bzz-raw://c47c23150fdc9474c65768090ec7eed76f421648d1625ff7184ee04d13e97926",
+				"dweb:/ipfs/Qma7zX9bzXGtccaCeurqHSwW4PJwwvDnY1BomePL4k3NnV"
 			]
 		},
 		"contracts/CursosFactory.sol": {

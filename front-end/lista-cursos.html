@@ -47,8 +47,8 @@
                                     <h3 style="float:right">${curso.creditos} Créditos</h3>
                                     <h2>${curso.id} - ${curso.nombre}</h2>
                                     <p>Profesor: ${curso.profesor}</p>
-                                    <p>Correlativas: ${curso.correlativas}</p>
-                                    <p>Activo: ${curso.activo}</p>
+                                    <p>Correlativas: ${(curso.correlativas != "") ? curso.correlativas : "Sin correlativas"}</p>
+                                    <p>Activo: ${(curso.activo) ? "Sí" : "No"}</p>
                                     <div style="display:flex; justify-content:flex-end;"><button style="width: 100%;" type="button"
                                         onclick="navigateToEditarCurso(${curso.id})">Editar</button></div>
                                 </div>`);

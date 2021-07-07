@@ -17,11 +17,15 @@
     </div>
     <div style="margin: 0 auto; max-width: 1280px;">
         <h1>Alumnos</h1>
+        <div style="display: flex; justify-content: flex-end;">
+            <button onclick="window.location.href = './aprobar-alumno.html'">Aprobar alumno</button>
+        </div>
         <div>Ingrese el address de un alumno para ver su historial académico</div>
         <div style="margin-top: 20px;">
             <label>Alumno (address): </label><input id="idAlumno" type="text" />
             <button onclick="cargarCursadas()">Buscar</button>
         </div>
+        <div id="creditosAlumno" style="margin-top: 20px;"></div>
         <div id="cursadas" style="margin-top: 20px;">
         </div>
         <br />
@@ -37,7 +41,9 @@
         function cargarCursadas() {
             var addressAlumno = document.getElementById('idAlumno').value;
             helper.getCursos(displayAlumnos);
-            helper.getCreditosAlumno(addressAlumno, function (cred) { alert(cred); });
+            helper.getCreditosAlumno(addressAlumno, function (cred) { 
+                 $("#creditosAlumno").append(`<h3>Creditos: ${cred} </h3>`);
+             });
         }
 
         function displayAlumnos(ids) {
@@ -52,7 +58,7 @@
             if (cursada.initialized) {
                 $("#cursadas").append(`<div style="border: 1px solid silver; padding: 10px 20px;">
                                  <h3>Curso con ID: ${cursada.idCurso} </h3>
-                                    <p>Aprueba solo cursada: ${cursada.soloCursada}</p>
+                                    <p>Aprueba: ${(cursada.soloCursada) ? "solo cursada" : "final"}</p>
                                     <p>Nota (0 si es solo cursada): ${cursada.nota}</p>
                                     <p>Fecha aprobacion: ${new Date(cursada.fechaAprobacion * 1000)}</p>
                                 </div>`);
