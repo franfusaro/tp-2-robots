@@ -42,9 +42,9 @@
 						"type": "address"
 					},
 					{
-						"internalType": "int256",
+						"internalType": "uint256",
 						"name": "creditos",
-						"type": "int256"
+						"type": "uint256"
 					},
 					{
 						"internalType": "uint256[]",
@@ -55,6 +55,62 @@
 				"name": "createCurso",
 				"outputs": [],
 				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					}
+				],
+				"name": "getCurso",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "id",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string",
+								"name": "nombre",
+								"type": "string"
+							},
+							{
+								"internalType": "address",
+								"name": "profesor",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "creditos",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256[]",
+								"name": "correlativas",
+								"type": "uint256[]"
+							},
+							{
+								"internalType": "bool",
+								"name": "activo",
+								"type": "bool"
+							},
+							{
+								"internalType": "bool",
+								"name": "initialized",
+								"type": "bool"
+							}
+						],
+						"internalType": "struct CursosFactory.Curso",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -107,9 +163,9 @@
 						"type": "address"
 					},
 					{
-						"internalType": "int256",
+						"internalType": "uint256",
 						"name": "creditos",
-						"type": "int256"
+						"type": "uint256"
 					},
 					{
 						"internalType": "uint256[]",
@@ -194,11 +250,11 @@
 	},
 	"sources": {
 		"contracts/CursosFactory.sol": {
-			"keccak256": "0xed7e71678b4d37fce3d1bb080dc0454bd0f9c3f565b4268b3c30e832ef2fa6cc",
+			"keccak256": "0xd5e2a9c283795b18405d8ebf755b54e92d3fa9cffe2915a2db60785376c69ab7",
 			"license": "NONE",
 			"urls": [
-				"bzz-raw://00ecfaf3b32c6b387fc900429e170d0f5d136229eb2f1ee9b2106a06429b6961",
-				"dweb:/ipfs/QmQDRYuKqGhCmVh4zDoyRnBpkC9jJgtvMXxQpLew52U29T"
+				"bzz-raw://a42087294ee2094855623d2d909142d35933a62c9bfaeecde085f4f2318ef232",
+				"dweb:/ipfs/QmbsKQdqXUgsdDXTzYrBRK29g9qwZKisYRdrcKZQbgG7hb"
 			]
 		},
 		"contracts/Ownable.sol": {

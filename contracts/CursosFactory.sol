@@ -9,7 +9,7 @@ contract CursosFactory is Ownable {
         uint id;
         string nombre;
         address profesor;
-        int creditos;
+        uint creditos;
         uint[] correlativas;
         bool activo;
         bool initialized;
@@ -23,14 +23,20 @@ contract CursosFactory is Ownable {
         _;
     }
     
-    function createCurso(uint id, string memory nombre, address profesor, int creditos, uint[] calldata correlativas) public onlyOwner {
+    function createCurso(uint id, string memory nombre, address profesor, uint creditos, uint[] calldata correlativas) public onlyOwner {
         require(cursos[id].initialized == false);
+        require(id > 0);
+        require(bytes(nombre).length != 0);
+        require(creditos > 0);
         idsCursos.push(id);
         cursos[id] = Curso(id, nombre, profesor, creditos, correlativas, true, true);
     }
     
-    function modifyCurso(uint id, string memory nombre, address profesor, int creditos, uint[] calldata correlativas) public onlyOwner {
+    function modifyCurso(uint id, string memory nombre, address profesor, uint creditos, uint[] calldata correlativas) public onlyOwner {
         require(cursos[id].initialized == true);
+        require(id > 0);
+        require(bytes(nombre).length != 0);
+        require(creditos > 0);
         Curso storage curso = cursos[id];
         curso.nombre = nombre;
         curso.profesor = profesor;

@@ -128,9 +128,9 @@ var alumnosCursadasABI = [
 				"type": "address"
 			},
 			{
-				"internalType": "int256",
+				"internalType": "uint256",
 				"name": "creditos",
-				"type": "int256"
+				"type": "uint256"
 			},
 			{
 				"internalType": "uint256[]",
@@ -177,6 +177,25 @@ var alumnosCursadasABI = [
 	{
 		"inputs": [
 			{
+				"internalType": "address",
+				"name": "alumno",
+				"type": "address"
+			}
+		],
+		"name": "getCreditosAlumno",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
 				"internalType": "uint256",
 				"name": "id",
 				"type": "uint256"
@@ -202,9 +221,9 @@ var alumnosCursadasABI = [
 						"type": "address"
 					},
 					{
-						"internalType": "int256",
+						"internalType": "uint256",
 						"name": "creditos",
-						"type": "int256"
+						"type": "uint256"
 					},
 					{
 						"internalType": "uint256[]",
@@ -331,9 +350,9 @@ var alumnosCursadasABI = [
 				"type": "address"
 			},
 			{
-				"internalType": "int256",
+				"internalType": "uint256",
 				"name": "creditos",
-				"type": "int256"
+				"type": "uint256"
 			},
 			{
 				"internalType": "uint256[]",

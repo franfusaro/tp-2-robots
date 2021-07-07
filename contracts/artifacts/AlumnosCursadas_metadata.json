@@ -134,9 +134,9 @@
 						"type": "address"
 					},
 					{
-						"internalType": "int256",
+						"internalType": "uint256",
 						"name": "creditos",
-						"type": "int256"
+						"type": "uint256"
 					},
 					{
 						"internalType": "uint256[]",
@@ -183,6 +183,25 @@
 			{
 				"inputs": [
 					{
+						"internalType": "address",
+						"name": "alumno",
+						"type": "address"
+					}
+				],
+				"name": "getCreditosAlumno",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "uint256",
 						"name": "id",
 						"type": "uint256"
@@ -208,9 +227,9 @@
 								"type": "address"
 							},
 							{
-								"internalType": "int256",
+								"internalType": "uint256",
 								"name": "creditos",
-								"type": "int256"
+								"type": "uint256"
 							},
 							{
 								"internalType": "uint256[]",
@@ -337,9 +356,9 @@
 						"type": "address"
 					},
 					{
-						"internalType": "int256",
+						"internalType": "uint256",
 						"name": "creditos",
-						"type": "int256"
+						"type": "uint256"
 					},
 					{
 						"internalType": "uint256[]",
@@ -424,19 +443,19 @@
 	},
 	"sources": {
 		"contracts/AlumnosCursadas.sol": {
-			"keccak256": "0x4c7eb592101d778b1bbff13417e108d72ff225382db544943365d1c50421026c",
+			"keccak256": "0xf236df7752bc89716deaf6ad38d106fa03005418de34f350ffdb12da2facd143",
 			"license": "NONE",
 			"urls": [
-				"bzz-raw://2016721226ba64640376e0016dda38686fd235cbbf870c316e3dd19951b79d88",
-				"dweb:/ipfs/Qmard9RAgokLb5eKvwk1EscsRq17HMax77Qc72rrRtjyZd"
+				"bzz-raw://a81e34ebc8f83f33d4751b17e88fada60e6400dd715a0bd96297f9d7d74f031a",
+				"dweb:/ipfs/QmRYu9hGSJDesqTfEzb7McRmfUTLuxbAyLxtR3hhdMKq4Q"
 			]
 		},
 		"contracts/CursosFactory.sol": {
-			"keccak256": "0xdfc03153caf487bc603c93d75b62f4eee8586f109d986312e927ba43358efa1f",
+			"keccak256": "0xd5e2a9c283795b18405d8ebf755b54e92d3fa9cffe2915a2db60785376c69ab7",
 			"license": "NONE",
 			"urls": [
-				"bzz-raw://098fb85a3a94099e3dae49f0af70d2ad6bbdf94a80c26b59a69fbc7a8fc6a3d5",
-				"dweb:/ipfs/QmYg4F4sHY2AmAfxeNZhgdtj6c7iwgR85h7YFByTLUfEC5"
+				"bzz-raw://a42087294ee2094855623d2d909142d35933a62c9bfaeecde085f4f2318ef232",
+				"dweb:/ipfs/QmbsKQdqXUgsdDXTzYrBRK29g9qwZKisYRdrcKZQbgG7hb"
 			]
 		},
 		"contracts/Ownable.sol": {

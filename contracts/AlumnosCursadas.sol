@@ -22,7 +22,7 @@ contract AlumnosCursadas is CursosFactory {
     
     mapping(uint => mapping(address => Cursada)) cursadasAprobadas;
     mapping(uint => address[]) alumnosCursando;
-    mapping(address => int) creditos;
+    mapping(address => uint) creditos;
     
     modifier isProfesor(address profesor, uint idCurso) {
         require(cursos[idCurso].profesor == profesor);
@@ -41,7 +41,7 @@ contract AlumnosCursadas is CursosFactory {
         _;
     }
     
-    function asignarAprobacionSoloCursada(address alumno, uint _idCurso) external isProfesor(msg.sender, _idCurso) hasAllCorrelativasAprobadas(alumno, _idCurso) {
+    function asignarAprobacionSoloCursada(address alumno, uint _idCurso) external isProfesor(msg.sender, _idCurso) existeCurso(_idCurso) hasAllCorrelativasAprobadas(alumno, _idCurso) {
         require(cursadasAprobadas[_idCurso][alumno].nota == 0);
         if (!cursadasAprobadas[_idCurso][alumno].initialized) {
             alumnosCursando[_idCurso].push(alumno);
@@ -50,7 +50,7 @@ contract AlumnosCursadas is CursosFactory {
         emit CursadaAprobada(_idCurso, alumno, true);
     }
     
-    function asignarAprobacionFinalCursada(address alumno, uint _idCurso, uint8 nota) external isProfesor(msg.sender, _idCurso) hasAllCorrelativasAprobadas(alumno, _idCurso) {
+    function asignarAprobacionFinalCursada(address alumno, uint _idCurso, uint8 nota) external isProfesor(msg.sender, _idCurso) existeCurso(_idCurso) hasAllCorrelativasAprobadas(alumno, _idCurso) {
         require(nota >= minNota && nota <= maxNota);
         require(cursadasAprobadas[_idCurso][alumno].nota == 0);
         cursadasAprobadas[_idCurso][alumno] = Cursada(_idCurso, false, nota, block.timestamp, true);
@@ -83,6 +83,10 @@ contract AlumnosCursadas is CursosFactory {
     
     function getCusadaAprobadas(uint idCurso,address alumno) public view returns(Cursada memory) {
         return cursadasAprobadas[idCurso][alumno];
+    }
+    
+    function getCreditosAlumno(address alumno) public view returns(uint) {
+        return creditos[alumno];
     }
 }
 

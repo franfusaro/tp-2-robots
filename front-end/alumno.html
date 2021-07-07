@@ -35,7 +35,9 @@
         }
 
         function cargarCursadas() {
+            var addressAlumno = document.getElementById('idAlumno').value;
             helper.getCursos(displayAlumnos);
+            helper.getCreditosAlumno(addressAlumno, function (cred) { alert(cred); });
         }
 
         function displayAlumnos(ids) {

@@ -1,6 +1,6 @@
 var helper = (function() {
     var _helper = {};
-    var contractAddress = "0x1da989C3B69213eD91faF250E4e0196373968a86";
+    var contractAddress = "0x905850E4f90ce4488E43c6D3E8d4cA3eBd1f71d9";
     var contract;
     var userAccount;
     var web3js;
@@ -88,6 +88,11 @@ var helper = (function() {
     _helper.getCusadaAprobada = function(id, address, onSuccess) {
         _helper.contract.methods.getCusadaAprobadas(id, address).call()
             .then(function(cursada) { onSuccess(cursada); });
+    }
+
+    _helper.getCreditosAlumno = function(alumno, onSuccess) {
+        _helper.contract.methods.getCreditosAlumno(alumno).call()
+            .then(function (creditos) { onSuccess(creditos); });
     }
 
 
